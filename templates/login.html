@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Please login to the Application!</h2>
+    {% for field, errors in form.errors.items() %}
+    {{ ', '.join(errors) }}
+    {% endfor %}
+    {% extends "layout.html" %}
+    {% block body %}
+    <form class="form-horizontal" method="POST" action="">
+        {{ form.csrf_token() }}
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary")}}
+        </div>
+        <div class ="form-group">
+            <strong>Did not register yet?</strong>
+            <a href={{url_for('registration')}}>Click here to Register</a>
+        </div>
+    </form>
+    {% endblock %}
+</div>
